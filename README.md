@@ -12,5 +12,5 @@ variant (one of `beta`, `private`, `experimental` or `xcode`).
 
 ```
 https://add-sketch-assistant.now.sh/api/main?variant=beta&url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
-  => sketch://install-assistant?url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
+  => sketch-beta://install-assistant?url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
 ```
