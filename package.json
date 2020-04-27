@@ -6,6 +6,9 @@
   "dependencies": {
     "@now/node": "^1.5.1",
     "@types/node": "^13.13.2",
+    "@types/node-fetch": "^2.5.7",
+    "get-npm-tarball-url": "^2.0.1",
+    "node-fetch": "^2.6.0",
     "prettier": "^2.0.5",
     "typescript": "^3.8.3"
   },
