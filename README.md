@@ -1,17 +1,15 @@
 # add-sketch-assistant
 
-Sketch Assistant one-click install web service.
+> Sketch Assistant one-click install web service.
 
-Resolves a package name and dist tag to a npm tgz url and redirects to a `sketch://` protocol url in
-order to add an Assistant to Sketch
+Currently deployed to `https://add-sketch-assistant.now.sh/api/main`
 
-Deployed to:
+## What does it do?
 
-```
-https://add-sketch-assistant.now.sh/api/main
-```
+Resolves an npm package name and dist tag to a full npm tarball url, and then redirects to the `sketch://` protocol url in
+order to add an Assistant to Sketch.
 
-### Query params
+## Query parameters
 
 - `pkg`
   - npm package name
