@@ -1,16 +1,25 @@
 # add-sketch-assistant
 
-Redirects to a `sketch://` protocol url to add an Assistant to Sketch
+Sketch Assistant one-click install web service.
+
+Resolves a package name and dist tag to a npm tgz url and redirects to a `sketch://` protocol url in
+order to add an Assistant to Sketch
+
+Deployed to:
 
 ```
-https://add-sketch-assistant.now.sh/api/main?url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
-  => sketch://install-assistant?url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
+https://add-sketch-assistant.now.sh/api/main
 ```
 
-Use the `variant` query parameter to add an Assistant to a non-standard Sketch release
-variant (one of `beta`, `private`, `experimental` or `xcode`).
+### Query params
 
-```
-https://add-sketch-assistant.now.sh/api/main?variant=beta&url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
-  => sketch-beta://install-assistant?url=https://sketch-hq.github.io/sketch-assistant-internal/sketch-assistant-internal-latest.tgz
-```
+- `pkg`
+  - npm package name
+  - Required
+- `tag`
+  - npm distribution tag
+  - Defaults to `latest`
+- `variant`
+  - Sketch release variant
+  - Must be one of `public`, `beta`, `private`, `experimental` or `xcode`
+  - Defaults to `pubic`
