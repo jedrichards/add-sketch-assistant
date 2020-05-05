@@ -2,12 +2,14 @@ import { NowRequest, NowResponse } from '@now/node'
 import fetch from 'node-fetch'
 import getNpmTarballUrl from 'get-npm-tarball-url'
 
+const validVariants = ['public', 'beta', 'private', 'internal', 'experimental', 'xcode']
+
 function assertPkg(val: unknown): asserts val is string {
   if (typeof val !== 'string') throw Error('pkg is invalid')
 }
 
 function assertTag(val: unknown): asserts val is string {
-  if (typeof val !== 'string') throw Error('tag is invalid')
+  if (typeof val !== 'string') throw Error(`dist tag ${val} in invalid`)
 }
 
 function assertSemver(val: unknown, tag: string): asserts val is string {
@@ -15,8 +17,8 @@ function assertSemver(val: unknown, tag: string): asserts val is string {
 }
 
 function assertVariant(val: unknown): asserts val is string {
-  if (!['public', 'beta', 'private', 'internal', 'experimental', 'xcode'].includes(val as string)) {
-    throw Error('variant is invalid')
+  if (!validVariants.includes(val as string)) {
+    throw Error(`sketch variant ${val} is invalid, must be one of ${validVariants}`)
   }
 }
 
@@ -35,12 +37,15 @@ export default async (request: NowRequest, response: NowResponse) => {
     assertSemver(semver, tag)
     // Redirect to the one-click install url
     const protocol = variant === 'public' ? 'sketch' : `sketch-${variant}`
-    response.status(307)
-    response.setHeader(
-      'Location',
-      `${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`,
-    )
-    response.send('')
+    // response.status(307)
+    // response.setHeader(
+    //   'Location',
+    //   `${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`,
+    // )
+    // response.send('')
+    response
+      .status(200)
+      .send(`${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`)
   } catch (error) {
     response.status(500).send(`<pre>${error.message}\n${error.stack}</pre>`)
   }
