@@ -37,15 +37,12 @@ export default async (request: NowRequest, response: NowResponse) => {
     assertSemver(semver, tag)
     // Redirect to the one-click install url
     const protocol = variant === 'public' ? 'sketch' : `sketch-${variant}`
-    // response.status(307)
-    // response.setHeader(
-    //   'Location',
-    //   `${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`,
-    // )
-    // response.send('')
-    response
-      .status(200)
-      .send(`${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`)
+    response.status(307)
+    response.setHeader(
+      'Location',
+      `${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, semver)}`,
+    )
+    response.send('')
   } catch (error) {
     response.status(500).send(`<pre>${error.message}\n${error.stack}</pre>`)
   }
