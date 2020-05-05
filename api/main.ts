@@ -15,7 +15,7 @@ function assertSemver(val: unknown, tag: string): asserts val is string {
 }
 
 function assertVariant(val: unknown): asserts val is string {
-  if (!['public', 'beta', 'private', 'experimental', 'xcode'].includes(val as string)) {
+  if (!['public', 'beta', 'private', 'internal', 'experimental', 'xcode'].includes(val as string)) {
     throw Error('variant is invalid')
   }
 }

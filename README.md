@@ -21,5 +21,5 @@ https://add-sketch-assistant.now.sh/api/main
   - Defaults to `latest`
 - `variant`
   - Sketch release variant
-  - Must be one of `public`, `beta`, `private`, `experimental` or `xcode`
+  - Must be one of `public`, `beta`, `private`, `internal`, `experimental` or `xcode`
   - Defaults to `pubic`
