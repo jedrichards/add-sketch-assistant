@@ -59,7 +59,7 @@ export default async (request: NowRequest, response: NowResponse) => {
     response.status(307)
     response.setHeader(
       'Location',
-      `${protocol}://install-assistant?url=${getNpmTarballUrl(pkg, targetVersion)}`,
+      `${protocol}://add-assistant?url=${getNpmTarballUrl(pkg, targetVersion)}`,
     )
     response.send('')
   } catch (error) {
